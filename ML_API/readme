@@ -1,0 +1,18 @@
+
+# README:
+#
+# The entry-point for this API is run.py.
+# 
+# This project is currently deployed on the free tier of 'render'
+#
+# This project Is structed in 4 main components:
+#   1. Datasets
+#       - The datasets required to train models
+#   2. Deployed Models
+#       -  Deployed and compressed PKL dependencies from models in the
+#            'Machine Learning Projects/Models/' folder
+#   3. ML_API
+#       - This is the flask API in charge of serving deployed models and data to the client.
+#   4. Models
+#       - Independent models that train and hold logical data pertaining to.
+

@@ -1,0 +1,35 @@
+name: Replace & Deploy to EC2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v1
+      - name: Terraform Init and Apply
+        run: |
+          cd terraform
+          terraform init
+          terraform apply -auto-approve -var="AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Get EC2 Instance IP
+        id: ec2_ip
+        run: 
+          cd terraform
+          echo "running ec2_ip"
+          echo "::set-output name=IP::$(terraform output -raw ec2_instance_ip)"
+      # - name: SSH and Deploy Code
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ steps.ec2_ip.outputs.IP }}
+      #     username: ec2-user
+      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     script: |
+      #       git clone https://github.com/AnthonyCalderaio/Machine-Learning.git
+      #       cd Machine-Learning
+      #       # Any additional deployment scripts you might have

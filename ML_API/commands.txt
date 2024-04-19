@@ -1,0 +1,3 @@
+# Install dependencies to the package folder with: pip install --target ./package <package_name>
+# Install the packages locally: $pip install <package-name> -t . //for example:\\  $pip install joblib -t .
+# zip whole folder: zip -r fake_or_not.zip .

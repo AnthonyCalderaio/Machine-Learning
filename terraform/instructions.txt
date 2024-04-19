@@ -1,0 +1,12 @@
+To setup terraform:
+
+1) Create a file in the root of 'terraform' called terraform.env
+2) Populate the data in this format:
+------------------------------------------------
+export TF_VAR_aws_access_key_id=
+export TF_VAR_aws_secret_access_key=
+------------------------------------------------
+3) run: source terraform.env
+4) run: terraform init
+
+NOTE: Never commit the binary. Always commit the .hcl file creatd.
