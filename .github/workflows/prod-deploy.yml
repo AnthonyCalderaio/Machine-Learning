@@ -20,9 +20,17 @@ jobs:
       - name: Get EC2 Instance IP
         id: ec2_ip
         run: 
+          pwd
+          ls -al
           cd terraform
+          pwd
+          ls -al
+          terraform output -raw ec2_instance_ip
           echo "running ec2_ip"
           echo "::set-output name=IP::$(terraform output -raw ec2_instance_ip)"
+        shell: /usr/bin/bash -e {0}
+        env:
+          TERRAFORM_CLI_PATH: /home/runner/work/_temp/68834eb4-66a5-4e00-a762-33bb21a8ad1d
       # - name: SSH and Deploy Code
       #   uses: appleboy/ssh-action@master
       #   with:
