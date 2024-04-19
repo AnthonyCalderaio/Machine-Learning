@@ -27,13 +27,13 @@ jobs:
           ls -al
           terraform output -raw ec2_instance_ip
           echo "running ec2_ip"
-      # - name: SSH and Deploy Code
-      #   uses: appleboy/ssh-action@master
-      #   with:
-      #     host: ${{ steps.ec2_ip.outputs.IP }}
-      #     username: ec2-user
-      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
-      #     script: |
-      #       git clone https://github.com/AnthonyCalderaio/Machine-Learning.git
-      #       cd Machine-Learning
-      #       # Any additional deployment scripts you might have
+      - name: SSH and Deploy Code
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ steps.ec2_ip.outputs.IP }}
+          username: ec2-user
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            git clone https://github.com/AnthonyCalderaio/Machine-Learning.git
+            cd Machine-Learning
+            # Any additional deployment scripts you might have
