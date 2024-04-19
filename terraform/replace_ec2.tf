@@ -21,9 +21,5 @@ resource "aws_instance" "example" {
   # user_data = "${file("setup.sh")}"
 }
 
-output "ec2_instance_ip" {
-  value = aws_instance.example.public_ip
-}
-
 variable "AWS_ACCESS_KEY_ID" {}
 variable "AWS_SECRET_ACCESS_KEY" {}
