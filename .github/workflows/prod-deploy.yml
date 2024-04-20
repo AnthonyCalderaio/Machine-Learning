@@ -23,7 +23,6 @@ jobs:
           echo "try this 2.5"
           echo "${{ steps.terraform_init.outputs.ec2_instance_ip }}"
           echo "ec2_instance_id=`terraform output -raw ec2_instance_id`" >> $GITHUB_ENV
-          ec2_instance_ip=$(terraform output ec2_instance_ip)
           echo "${{env.ec2_instance_id}}"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
