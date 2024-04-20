@@ -23,7 +23,7 @@ jobs:
         run: |
           # cd terraform
           echo "testing..."
-          echo "steps.terraform_init.outputs.ec2_instance_ip"
+          echo "${{steps.terraform_init.outputs.ec2_instance_ip}}"
           scp -o StrictHostKeyChecking=no -r . ec2-user@${{ steps.terraform_init.outputs.ec2_instance_ip }}:/
         env:
             AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
