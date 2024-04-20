@@ -18,8 +18,10 @@ jobs:
           terraform init
           terraform apply -auto-approve -var="AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
           echo "try this 1"
-          echo "${{ steps.terraform_init.outputs.stdout }}"
+          echo "${{ steps.terraform_init.outputs.stdout.ec2_instance_ip }}"
           echo "try this 2"
+          echo "try this 2.5"
+          echo "${{ steps.terraform_init.outputs.ec2_instance_ip }}"
           echo "ec2_instance_id=`terraform output -raw instance_id`" >> $GITHUB_ENV
           ec2_instance_ip=$(terraform output ec2_instance_ip)
           echo "${{env.ec2_instance_id}}"
