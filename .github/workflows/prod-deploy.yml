@@ -20,6 +20,8 @@ jobs:
 
           echo "try this 2"
           echo "ec2_instance_ip=$(terraform output ec2_instance_ip)"
+          echo "this 3"
+          echo "${{env.ec2_instance_ip}}"
 
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
