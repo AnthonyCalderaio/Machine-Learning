@@ -10,6 +10,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: hashicorp/setup-terraform@v1
       - name: Terraform Init and Apply
+        id: terraform_init
         run: |
           cd terraform
           terraform init
@@ -21,7 +22,7 @@ jobs:
         id: ec2_ip
         run: |
           cd terraform
-          scp -o StrictHostKeyChecking=no -r . ec2-user@${{ env.instance_ip }}:/
+          scp -o StrictHostKeyChecking=no -r . ec2-user@${{ steps.terraform_init.outputs.ec2_instance_ip }}:/
         env:
             AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
             AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -41,7 +42,7 @@ jobs:
 
 
 
-
+      # scp -o StrictHostKeyChecking=no -r . ec2-user@${{ env.instance_ip }}:/
 
 
 
