@@ -19,7 +19,7 @@ jobs:
           terraform apply -auto-approve -var="AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
 
           echo "try this 2"
-          echo "ec2_instance_ip=$(terraform output ec2_instance_ip)""
+          echo "ec2_instance_ip=$(terraform output ec2_instance_ip)"
 
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
