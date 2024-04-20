@@ -9,6 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_wrapper: false
       - name: Terraform Init and Apply
         id: terraform_init
         run: |
