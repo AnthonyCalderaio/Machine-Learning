@@ -25,18 +25,18 @@ jobs:
         env:
             AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
             AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      - name: Copy Repo to EC2 Instance
-        run: |
-          scp -o StrictHostKeyChecking=no -r . ec2-user@${{ steps.ec2_ip.outputs.instance_ip }}:/
-        env:
-          EC2_INSTANCE_IP: ${{ env.instance_ip }}
-          uses: appleboy/scp-action@master
-          with:
-          host: ${{ steps.ec2_ip.outputs.instance_ip }}
-          username: ec2-user
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "./*"
-          target: "/home/ec2-user/"
+      # - name: Copy Repo to EC2 Instance
+      #   run: |
+      #     scp -o StrictHostKeyChecking=no -r . ec2-user@${{ steps.ec2_ip.outputs.instance_ip }}:/
+      #   env:
+      #     EC2_INSTANCE_IP: ${{ env.instance_ip }}
+      #     uses: appleboy/scp-action@master
+      #     with:
+      #     host: ${{ steps.ec2_ip.outputs.instance_ip }}
+      #     username: ec2-user
+      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     source: "./*"
+      #     target: "/home/ec2-user/"
 
 
 
