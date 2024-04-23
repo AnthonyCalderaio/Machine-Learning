@@ -22,7 +22,7 @@ output "ec2_instance_ip" {
   value = aws_instance.example.public_ip
 }
 
-output "ssh_port" {
+output "public_dns" {
   value = aws_instance.example.public_dns
 }
 
