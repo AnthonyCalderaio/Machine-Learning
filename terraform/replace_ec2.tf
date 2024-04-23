@@ -22,5 +22,9 @@ output "ec2_instance_ip" {
   value = aws_instance.example.public_ip
 }
 
+output "ssh_port" {
+  value = aws_instance.example.public_dns
+}
+
 variable "AWS_ACCESS_KEY_ID" {}
 variable "AWS_SECRET_ACCESS_KEY" {}
