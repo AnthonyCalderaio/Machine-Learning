@@ -27,6 +27,6 @@ jobs:
           port: ${{ steps.terraform_init.outputs.public_dns }}
           key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           source: "ML_API/*"
-          target: ":/"
+          target: "/opt/ML_API"
           
 
