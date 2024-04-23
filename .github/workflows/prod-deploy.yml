@@ -18,13 +18,13 @@ jobs:
           terraform init
           terraform apply -auto-approve -var="AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
           echo "::set-output name=ec2_instance_ip::$(terraform output ec2_instance_ip)"
-          echo "::set-output name=public_dns::$(terraform output public_dns)"
+          echo "::set-output name=instance_type::$(terraform output instance_type)"
       - name: Copy ML_API to EC2  
         uses: appleboy/scp-action@master
         with:
           host: ${{ steps.terraform_init.outputs.ec2_instance_ip }}
           username: ${{ secrets.EC2_USER }}
-          port: ${{ steps.terraform_init.outputs.public_dns }}
+          port: ${{ steps.terraform_init.outputs.instance_type }}
           key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           source: "ML_API/*"
           target: "/opt/ML_API"

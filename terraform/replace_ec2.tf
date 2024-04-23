@@ -22,8 +22,8 @@ output "ec2_instance_ip" {
   value = aws_instance.example.public_ip
 }
 
-output "public_dns" {
-  value = aws_instance.example.public_dns
+output "instance_type" {
+  value = aws_instance.example.instance_type
 }
 
 variable "AWS_ACCESS_KEY_ID" {}
