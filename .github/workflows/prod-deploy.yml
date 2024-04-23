@@ -30,7 +30,7 @@ jobs:
         run: |
           # cd terraform
           echo "testing..."
-          echo "${{steps.terraform_init.outputs}}"
+          echo "${{steps.terraform_init.outputs.instance_ip}}"
           # cd ML_API
           # scp -o StrictHostKeyChecking=no -r . ec2-user@${{ steps.terraform_init.outputs.ec2_instance_ip }}:/
         env:
