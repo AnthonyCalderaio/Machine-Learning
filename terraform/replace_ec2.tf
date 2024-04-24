@@ -8,7 +8,7 @@ provider "aws" {
 resource "aws_instance" "example" {
   ami           = "ami-04e5276ebb8451442"
   instance_type = "t2.micro"
-  key_name      = var.EC2_SSH
+  # key_name      = var.EC2_SSH
 
   # Associate with security group allowing SSH traffic
   # vpc_security_group_ids = [aws_security_group.allow_ssh.id]
