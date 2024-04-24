@@ -23,7 +23,7 @@ output "ec2_instance_ip" {
 }
 
 output "instance_type" {
-  value = aws_instance.example.instance_type
+  value = aws_instance.example.security_groups[0].ingress[0].from_port
 }
 
 variable "AWS_ACCESS_KEY_ID" {}
