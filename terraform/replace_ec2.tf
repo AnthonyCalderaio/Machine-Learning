@@ -5,15 +5,18 @@ provider "aws" {
   secret_key = var.AWS_SECRET_ACCESS_KEY
 }
 
-data "aws_key_pair" "key_resource" {
-  key_name   = "04_23_2024_key"
-  include_public_key = true
+
+
+resource "aws_key_pair" "my_key_pair" {
+  key_name   = "04_23_2024_key"  # Name of the existing key pair in the EC2 console
+  public_key = var.PC_SSH  # Path to the public key file
 }
+
 
 resource "aws_instance" "example" {
   ami           = "ami-04e5276ebb8451442"
   instance_type = "t2.micro"
-  key_name      = key_resource.key_resource.key_name
+  key_name      = aws_key_pair.my_key_pair.key_name
 
   # Associate with security group allowing SSH traffic
   # vpc_security_group_ids = [aws_security_group.allow_ssh.id]
@@ -29,6 +32,7 @@ resource "aws_instance" "example" {
 
 variable "AWS_ACCESS_KEY_ID" {}
 variable "AWS_SECRET_ACCESS_KEY" {}
+variable "PC_SSH" {}
 
 
 output "ec2_instance_ip" {
