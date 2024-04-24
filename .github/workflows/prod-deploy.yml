@@ -24,7 +24,7 @@ jobs:
         with:
           host: ${{ steps.terraform_init.outputs.ec2_instance_ip }}
           username: ${{ secrets.EC2_USER }}
-          port: ${{ steps.terraform_init.outputs.instance_type }}
+          port: 22
           key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           source: "ML_API/*"
           target: "/opt/ML_API"
