@@ -1,4 +1,4 @@
-name: somethiong
+name: Deploy Latest ML_API
 
 on:
   workflow_dispatch:
