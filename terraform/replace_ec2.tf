@@ -8,6 +8,7 @@ provider "aws" {
 resource "aws_instance" "example" {
   ami           = "ami-04e5276ebb8451442"
   instance_type = "t2.micro"
+  key_name      = var.EC2_SSH
 
   # Associate with security group allowing SSH traffic
   # vpc_security_group_ids = [aws_security_group.allow_ssh.id]
@@ -21,35 +22,9 @@ resource "aws_instance" "example" {
   # user_data = "${file("setup.sh")}"
 }
 
-
-#resource "aws_security_group" "allow_ssh" {
-  #name        = "allow_ssh"
-  #description = "Allow SSH and SCP traffic"
-
-  # Allow SSH (port 22) traffic
-  #ingress {
-    #description = "SSH"
-    #from_port   = 22
-    #to_port     = 22
-    #protocol    = "tcp"
-    #cidr_blocks = ["0.0.0.0/0"]
-  #}
-
-  # Allow SCP (port 22) traffic
-  #ingress {
-    #description = "SCP"
-    #from_port   = 22
-    #to_port     = 22
-   #protocol    = "tcp"
-  # cidr_blocks = ["0.0.0.0/0"]
- # }
-#}
-
-
-
-
 variable "AWS_ACCESS_KEY_ID" {}
 variable "AWS_SECRET_ACCESS_KEY" {}
+variable "EC2_SSH" {}
 
 
 output "ec2_instance_ip" {
