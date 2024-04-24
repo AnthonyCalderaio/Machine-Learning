@@ -15,16 +15,18 @@ resource "aws_instance" "example" {
 
   # Optionally include user_data to run scripts at launch
   # user_data = "${file("setup.sh")}"
+
+  # Allow SSH Traffic
+  ingress {
+    description = "SSH"
+    from_port   = 0
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
 
-# SSH Traffic
-ingress {
-  description = "SSH"
-  from_port   = 0
-  to_port     = 22
-  protocol    = "tcp"
-  cidr_blocks = ["0.0.0.0/0"]
-}
+
 
 
 
