@@ -17,7 +17,7 @@ resource "aws_instance" "example" {
   # user_data = "${file("setup.sh")}"
 
   # Allow SSH Traffic
-  dynamic ingress {
+  dynamic "ingress" {
     description = "SSH"
     from_port   = 0
     to_port     = 22
