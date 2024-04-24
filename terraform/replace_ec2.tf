@@ -5,10 +5,15 @@ provider "aws" {
   secret_key = var.AWS_SECRET_ACCESS_KEY
 }
 
+resource "aws_key_pair" "key_resource" {
+  key_name   = "04_23_2024_key"
+  public_key = file("~/.ssh/example_key.pub")
+}
+
 resource "aws_instance" "example" {
   ami           = "ami-04e5276ebb8451442"
   instance_type = "t2.micro"
-  #key_name      = "04_23_2024_key"
+  key_name      = key_resource.key_resource.key_name
 
   # Associate with security group allowing SSH traffic
   # vpc_security_group_ids = [aws_security_group.allow_ssh.id]
