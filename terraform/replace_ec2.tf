@@ -1,6 +1,6 @@
 ## EC2
 
-terraform import aws_key_pair.04_23_2024_key us-east-1
+# terraform import aws_key_pair.04_23_2024_key us-east-1
 
 # Access Key
 provider "aws" {
