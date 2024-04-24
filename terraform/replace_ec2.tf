@@ -9,7 +9,7 @@ provider "aws" {
 
 resource "aws_key_pair" "my_key_pair" {
   key_name   = "04_23_2024_key"  # Name of the existing key pair in the EC2 console
-  public_key = var.PC_SSH  # Path to the public key file
+  #public_key = var.PC_SSH  # Path to the public key file
 }
 
 
