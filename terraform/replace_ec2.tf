@@ -22,6 +22,9 @@ resource "aws_instance" "example" {
   # vpc_security_group_ids = [aws_security_group.allow_ssh.id]
   security_groups = ["allow_ssh"]
 
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+
   tags = {
     Name = "ExampleInstance"
   }
