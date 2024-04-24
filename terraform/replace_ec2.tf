@@ -22,9 +22,9 @@ resource "aws_instance" "example" {
 }
 
 
-resource "aws_security_group" "allow_ssh" {
-  name        = "allow_ssh"
-  description = "Allow SSH and SCP traffic"
+#resource "aws_security_group" "allow_ssh" {
+  #name        = "allow_ssh"
+  #description = "Allow SSH and SCP traffic"
 
   # Allow SSH (port 22) traffic
   #ingress {
