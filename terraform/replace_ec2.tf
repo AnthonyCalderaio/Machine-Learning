@@ -7,10 +7,10 @@ provider "aws" {
 
 
 
-#resource "aws_key_pair" "my_key_pair" {
-  #key_name   = "04_23_2024_key"  # Name of the existing key pair in the EC2 console
-  #public_key = var.PC_SSH  # Path to the public key file
-#}
+resource "aws_key_pair" "my_key_pair" {
+  key_name   = "04_23_2024_key"  # Name of the existing key pair in the EC2 console
+  public_key = var.EC2_SSH  # Path to the public key file
+}
 
 
 resource "aws_instance" "example" {
@@ -40,7 +40,7 @@ resource "aws_vpc" "example" {
 
 variable "AWS_ACCESS_KEY_ID" {}
 variable "AWS_SECRET_ACCESS_KEY" {}
-variable "PC_SSH" {}
+variable "EC2_SSH" {}
 
 
 output "ec2_instance_ip" {
