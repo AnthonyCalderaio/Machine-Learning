@@ -12,7 +12,7 @@ resource "aws_instance" "example" {
 
   # Associate with security group allowing SSH traffic
   # vpc_security_group_ids = [aws_security_group.allow_ssh.id]
-  # security_groups = ["allow_ssh"]
+  security_groups = ["allow_ssh"]
 
   tags = {
     Name = "ExampleInstance"
