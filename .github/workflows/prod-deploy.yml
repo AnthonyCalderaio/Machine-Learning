@@ -1,4 +1,4 @@
-name: Replace & Deploy to EC2
+name: somethiong
 
 on:
   workflow_dispatch:
@@ -28,6 +28,7 @@ jobs:
         with:
           host: ${{ steps.terraform_init.outputs.ec2_instance_ip }}
           username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.SSH_KEY }}
           port: 22
           source: "ML_API/*"
           target: "/opt/ML_API"
