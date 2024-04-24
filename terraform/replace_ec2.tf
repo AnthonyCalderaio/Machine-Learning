@@ -9,6 +9,15 @@ resource "aws_instance" "example" {
   ami           = "ami-04e5276ebb8451442"
   instance_type = "t2.micro"
 
+  # Allow SSH Traffic
+  ingress {
+    description = "SSH"
+    from_port   = 0
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   tags = {
     Name = "ExampleInstance"
   }
@@ -16,14 +25,7 @@ resource "aws_instance" "example" {
   # Optionally include user_data to run scripts at launch
   # user_data = "${file("setup.sh")}"
 
-  # Allow SSH Traffic
-  dynamic "ingress" {
-    description = "SSH"
-    from_port   = 0
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+  
 }
 
 
