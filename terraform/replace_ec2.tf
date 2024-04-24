@@ -5,9 +5,9 @@ provider "aws" {
   secret_key = var.AWS_SECRET_ACCESS_KEY
 }
 
-resource "aws_key_pair" "key_resource" {
+data "aws_key_pair" "key_resource" {
   key_name   = "04_23_2024_key"
-  public_key = file("~/.ssh/example_key.pub")
+  include_public_key = true
 }
 
 resource "aws_instance" "example" {
