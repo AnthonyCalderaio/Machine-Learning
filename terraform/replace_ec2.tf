@@ -17,7 +17,7 @@ resource "aws_key_pair" "my_key_pair" {
 resource "aws_instance" "example" {
   ami           = "ami-04e5276ebb8451442"
   instance_type = "t2.micro"
-  key_name      = aws_key_pair.my_key_pair.my_key_pair
+  key_name      = aws_key_pair.my_key_pair.key_name
   # key_name      = "04_23_2024_key"
   # Associate with security group allowing SSH traffic
   security_groups = ["allow_ssh"]
