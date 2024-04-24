@@ -10,7 +10,8 @@ resource "aws_instance" "example" {
   instance_type = "t2.micro"
 
   # Associate with security group allowing SSH traffic
-  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
+  # vpc_security_group_ids = [aws_security_group.allow_ssh.id]
+  security_groups = ["allow_ssh"]
 
   tags = {
     Name = "ExampleInstance"
@@ -26,23 +27,23 @@ resource "aws_security_group" "allow_ssh" {
   description = "Allow SSH and SCP traffic"
 
   # Allow SSH (port 22) traffic
-  ingress {
-    description = "SSH"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+  #ingress {
+    #description = "SSH"
+    #from_port   = 22
+    #to_port     = 22
+    #protocol    = "tcp"
+    #cidr_blocks = ["0.0.0.0/0"]
+  #}
 
   # Allow SCP (port 22) traffic
-  ingress {
-    description = "SCP"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
+  #ingress {
+    #description = "SCP"
+    #from_port   = 22
+    #to_port     = 22
+   #protocol    = "tcp"
+  # cidr_blocks = ["0.0.0.0/0"]
+ # }
+#}
 
 
 
