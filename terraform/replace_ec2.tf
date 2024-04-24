@@ -12,7 +12,7 @@ resource "aws_instance" "example" {
 
   # Associate with security group allowing SSH traffic
   # vpc_security_group_ids = [aws_security_group.allow_ssh.id]
-  security_groups = ["allow_ssh"]
+  # security_groups = ["allow_ssh"]
 
   tags = {
     Name = "ExampleInstance"
@@ -24,7 +24,7 @@ resource "aws_instance" "example" {
 
 variable "AWS_ACCESS_KEY_ID" {}
 variable "AWS_SECRET_ACCESS_KEY" {}
-variable "EC2_SSH" {}
+# variable "EC2_SSH" {}
 
 
 output "ec2_instance_ip" {
