@@ -45,9 +45,11 @@ jobs:
           known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
       - name: Adding Known Hosts
         run: |
-          ssh-keyscan --version
-          chmod 700 ~/.ssh/known_hosts
-          ssh-keyscan -H ${{ steps.terraform_init.outputs.ec2_instance_ip }} >> ~/.ssh/known_hosts
+          # echo "${{ secrets.EC2_PRIVATE_SSH }}" > ../private.key
+          # sudo chmod 600 ../private.key
+          # echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          echo "${{ secrets.EC2_PRIVATE_SSH }}" > ~/.ssh/id_rsa
+          ssh-keyscan -H ${{steps.terraform_init.outputs.ec2_instance_ip}} > ~/.ssh/known_hosts
       - name: Attach SSH and SCP
         run:
         # run: |
