@@ -43,7 +43,7 @@ jobs:
           path: git@github.com:AnthonyCalderaio/Machine-Learning.git
       - name: SCP files
         run:
-          scp -i $SSH_AUTH_SOCK -v -r  /ML_API ${{ secrets.EC2_USER }}@${{ steps.terraform_init.outputs.ec2_instance_ip }}:/
+          scp -i -v -r  /ML_API ${{ secrets.EC2_USER }}@${{ steps.terraform_init.outputs.ec2_instance_ip }}:/
 
       # - name: Copy ML_API to EC2  
       #   uses: appleboy/scp-action@v0.1.4
