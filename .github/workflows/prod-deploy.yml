@@ -43,7 +43,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_PRIVATE_SSH }}" > ~/.ssh/id_rsa.pem
           chmod 700 ~/.ssh/id_rsa.pem
-          scp -rv -i ~/.ssh/id_rsa.pem -r /ML_API ${{ secrets.EC2_USER }}@${{ steps.terraform_init.outputs.ec2_instance_ip }}:/
+          scp -rv -i ~/.ssh/id_rsa.pem -r ./ML_API ${{ secrets.EC2_USER }}@${{ steps.terraform_init.outputs.ec2_instance_ip }}:/
       # - name: SCP files
       #   run:
           # scp -i -v  /ML_API ${{ secrets.EC2_USER }}@${{ steps.terraform_init.outputs.ec2_instance_ip }}:/
