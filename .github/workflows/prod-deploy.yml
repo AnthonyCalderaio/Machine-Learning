@@ -44,7 +44,7 @@ jobs:
       - name: SCP files
         run:
           # scp -i -v  /ML_API ${{ secrets.EC2_USER }}@${{ steps.terraform_init.outputs.ec2_instance_ip }}:/
-          scp -i ${{ secrets.SSH_PRIVATE_KEY }} -r /ML_API ${{ secrets.EC2_USER }}@${{ steps.terraform_init.outputs.ec2_instance_ip }}:/
+          scp -i $SSH_AUTH_SOCK -r /ML_API ${{ secrets.EC2_USER }}@${{ steps.terraform_init.outputs.ec2_instance_ip }}:/
 
       # - name: Copy ML_API to EC2  
       #   uses: appleboy/scp-action@v0.1.4
