@@ -41,11 +41,11 @@ jobs:
       - name: Attach SSH and SCP
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.EC2_PRIVATE_SSH }}" > ~/.ssh/id_rsa
-          chmod 700 ~/.ssh/id_rsa
+          echo "${{ secrets.EC2_PRIVATE_SSH }}" > ~/.ssh/id_rsa.pem
+          chmod 700 ~/.ssh/id_rsa.pem
           cd ~/.ssh/
           ls -a
-          # scp -i ${{ secrets.EC2_PRIVATE_SSH }} -r /ML_API ${{ secrets.EC2_USER }}@${{ steps.terraform_init.outputs.ec2_instance_ip }}:/
+          scp -i ~/.ssh/id_rsa.pem -r /ML_API ${{ secrets.EC2_USER }}@${{ steps.terraform_init.outputs.ec2_instance_ip }}:/
       # - name: SCP files
       #   run:
           # scp -i -v  /ML_API ${{ secrets.EC2_USER }}@${{ steps.terraform_init.outputs.ec2_instance_ip }}:/
