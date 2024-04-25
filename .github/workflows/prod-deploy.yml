@@ -28,7 +28,7 @@ jobs:
         uses: appleboy/scp-action@v0.1.4
         with:
           # host: 3.89.105.66
-          host: ${{ steps.terraform_init.outputs.ec2_instance_ip }}
+          host: echo "${{ steps.terraform_init.outputs.ec2_instance_ip }}"
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_PRIVATE_SSH }}
           port: 22
