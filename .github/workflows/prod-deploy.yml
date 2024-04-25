@@ -38,12 +38,19 @@ jobs:
           # This will create a directory named `my-repo` and copy the repo contents to it
           # so that you can easily upload it to your remote server
           path: git@github.com:AnthonyCalderaio/Machine-Learning.git
+      - name: Set up SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
       - name: Attach SSH and SCP
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.EC2_PRIVATE_SSH }}" > ~/.ssh/id_rsa.pem
-          chmod 700 ~/.ssh/id_rsa.pem
-          scp -rv -i ~/.ssh/id_rsa.pem -r ./ML_API ${{ secrets.EC2_USER }}@${{ steps.terraform_init.outputs.ec2_instance_ip }}:/
+        run:
+        # run: |
+          # mkdir -p ~/.ssh
+          # echo "${{ secrets.EC2_PRIVATE_SSH }}" > ~/.ssh/id_rsa.pem
+          # chmod 700 ~/.ssh/id_rsa.pem
+          scp -rv -i $HOME/.ssh/id_rsa -r ./ML_API ${{ secrets.EC2_USER }}@${{ steps.terraform_init.outputs.ec2_instance_ip }}:/
+          # scp -rv -i ~/.ssh/id_rsa.pem -r ./ML_API ${{ secrets.EC2_USER }}@${{ steps.terraform_init.outputs.ec2_instance_ip }}:/
       # - name: SCP files
       #   run:
           # scp -i -v  /ML_API ${{ secrets.EC2_USER }}@${{ steps.terraform_init.outputs.ec2_instance_ip }}:/
