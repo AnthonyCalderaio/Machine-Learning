@@ -25,10 +25,12 @@ jobs:
           echo "heres the host"
           echo ::set-output name=ec2_instance_ip::$(terraform output ec2_instance_ip | sed 's/"//g')
       - name: Attach SSH Key
-        run: 
+        run: |
           mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
           echo "${{ secrets.EC2_PRIVATE_SSH }}" > ~/.ssh/id_rsa
+          echo "LSing"
+          ls
+          chmod 700 ~/.ssh
       - name: Checkout the repo
         uses: actions/checkout@v2
         with: 
