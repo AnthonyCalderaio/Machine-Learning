@@ -33,6 +33,6 @@ jobs:
           key: ${{ secrets.EC2_PRIVATE_SSH }}
           port: 22
           source: "ML_API/*"
-          target: "/ML_API"
+          target: "/"
           
 
