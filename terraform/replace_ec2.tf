@@ -16,11 +16,11 @@ provider "aws" {
 #}
 
 # Outbound Traffic Policy
-resource "aws_security_group" "exampleSecurityPolicy" {
+resource "aws_security_group" "example" {
   name        = "example-security-group"
   description = "Allow all outbound traffic"
 
-  vpc_id = aws_vpc.exampleSecurityPolicy.id
+  vpc_id = aws_vpc.example.id
 
   egress {
     from_port   = 0
