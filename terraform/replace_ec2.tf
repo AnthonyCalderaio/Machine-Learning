@@ -19,13 +19,13 @@ resource "aws_security_group" "allow_outbound" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
+# , aws_security_group.allow_outbound.name
 # Create the EC2 instance and associate it with the new security group
 resource "aws_instance" "example" {
   ami           = "ami-04e5276ebb8451442"
   instance_type = "t2.micro"
   key_name      = "04_23_2024_key"
-  security_groups = ["allow_ssh", aws_security_group.allow_outbound.name]
+  security_groups = ["allow_ssh"]
 
   tags = {
     Name = "ExampleInstance"
