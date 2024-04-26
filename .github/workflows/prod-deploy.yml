@@ -35,8 +35,6 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_PRIVATE_SSH }}" > ~/.ssh/id_rsa
-          ssh-add
-          ssh-add -L
           ssh-keyscan -H ${{steps.terraform_init.outputs.ec2_instance_ip}} > ~/.ssh/known_hosts
       - name: Rsync ML_API to host
         run: 
