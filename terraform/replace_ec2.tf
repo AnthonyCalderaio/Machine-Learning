@@ -7,18 +7,6 @@ provider "aws" {
   secret_key = var.AWS_SECRET_ACCESS_KEY
 }
 
-resource "aws_security_group" "allow_outbound" {
-  name        = "allow_outbound"
-  description = "Allow all outbound traffic"
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
 
 # Create the EC2 instance and associate it with the new security group
 resource "aws_instance" "example" {
