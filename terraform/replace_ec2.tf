@@ -17,21 +17,6 @@ provider "aws" {
 
 
 
-# Outbound Traffic Policy
-#resource "aws_security_group" "example" {
-#  name        = "example-security-group"
- # description = "Allow all outbound traffic"
-
-
-  #egress {
-   # from_port   = 0
-    #to_port     = 0
-    #protocol    = "-1"
-    #cidr_blocks = ["0.0.0.0/0"]
-  #}
-#}
-
-
 resource "aws_instance" "example" {
   ami           = "ami-04e5276ebb8451442"
   instance_type = "t2.micro"
