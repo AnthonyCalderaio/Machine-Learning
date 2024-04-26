@@ -15,6 +15,21 @@ provider "aws" {
   #public_key = var.EC2_SSH  # Path to the public key file
 #}
 
+# Outbound Traffic Policy
+resource "aws_security_group" "exampleSecurityPolicy" {
+  name        = "example-security-group"
+  description = "Allow all outbound traffic"
+
+  vpc_id = aws_vpc.exampleSecurityPolicy.id
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
 
 resource "aws_instance" "example" {
   ami           = "ami-04e5276ebb8451442"
