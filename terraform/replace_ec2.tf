@@ -18,18 +18,18 @@ provider "aws" {
 
 
 # Outbound Traffic Policy
-resource "aws_security_group" "example" {
-  name        = "example-security-group"
-  description = "Allow all outbound traffic"
+#resource "aws_security_group" "example" {
+#  name        = "example-security-group"
+ # description = "Allow all outbound traffic"
 
 
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
+  #egress {
+   # from_port   = 0
+    #to_port     = 0
+    #protocol    = "-1"
+    #cidr_blocks = ["0.0.0.0/0"]
+  #}
+#}
 
 
 resource "aws_instance" "example" {
