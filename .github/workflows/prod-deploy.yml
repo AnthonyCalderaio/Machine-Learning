@@ -39,4 +39,5 @@ jobs:
           ssh-keyscan -H ${{steps.terraform_init.outputs.ec2_instance_ip}} >> ~/.ssh/known_hosts
       - name: Rsync ML_API to host
         run: 
-          rsync -aHP -r ./ML_API ${{ secrets.EC2_USER }}@${{ steps.terraform_init.outputs.ec2_instance_ip }}
+          rsync -aHP -r ./ML_API ${{ secrets.EC2_USER }}@${{ steps.terraform_init.outputs.ec2_instance_ip }}:~/
+          
