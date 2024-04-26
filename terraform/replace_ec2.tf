@@ -15,7 +15,7 @@ resource "aws_instance" "example" {
   #key_name      = aws_key_pair.my_key_pair.key_name
   key_name      = "04_23_2024_key"
   # Associate with security group allowing SSH traffic
-  security_groups = ["allow_ssh"]
+  security_groups = ["allow_ssh","allow_outbound"]
 
   tags = {
     Name = "ExampleInstance"
