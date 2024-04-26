@@ -15,6 +15,11 @@ provider "aws" {
   #public_key = var.EC2_SSH  # Path to the public key file
 #}
 
+# Define VPC
+data "aws_vpc" "default" {
+ default = true
+}
+
 # Outbound Traffic Policy
 resource "aws_security_group" "example" {
   name        = "example-security-group"
