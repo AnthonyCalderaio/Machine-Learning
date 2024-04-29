@@ -6,12 +6,9 @@ from flask_cors import CORS
 
 from misc.utils import save_to_csv, add_module_directories_to_os
 add_module_directories_to_os()
-from Models.nvidia_stock_prediction.get_nvda_data import get_nvidia_data 
-from Models.nvidia_stock_prediction.model_random_forest import train_nvidia_model_random_forest, get_todays_nvidia_prediction
 
 from ML_API.models.fake_or_not.run  import predictComment, process_csv
 from env_secrets import config
-
 
 home_dir = str(config['models_path'])
 
@@ -34,34 +31,18 @@ def currDir():
     print(dir)
     return dir
 
-
-# Happens when app loads
-# @app.before_first_request
-@app.route('/initialize_data', methods=['GET'])
-def initialize_data():
-    
-    # Get todays NVIDIA data and save to a CSV
-    save_to_csv(get_nvidia_data('2021-01-01', None), home_dir+'/datasets/latest_nvidia_data.csv')
-
-    # Train the model
-    train_nvidia_model_random_forest()
-
-    # Report on the model with todays prediction
-    # report_daily(get_todays_nvidia_prediction())
-    return 'Trained.'
-
 # Stock predictor route
     # TODO: 
     # 1) Make this route only send the plot.
     # 2) Move the model creation to outside the API(See fake_or_not)
     # 3) The API should only serve data. Models are deployed and fetched in other folders.
-@app.route('/nvidia_prediction', methods=['GET'])
-def nvidia_predictor():
-    # Pass the JSON data to a function in another file
+# @app.route('/nvidia_prediction', methods=['GET'])
+# def nvidia_predictor():
+#     # Pass the JSON data to a function in another file
     
-    image = get_todays_nvidia_prediction()
-    # Return the response in JSON format
-    return send_file(image, as_attachment=True)
+#     image = get_todays_nvidia_prediction()
+#     # Return the response in JSON format
+#     return send_file(image, as_attachment=True)
 
 # Fake or not review route
 @app.route('/fake_or_not', methods=['POST'])
