@@ -12,6 +12,7 @@ jobs:
       TF_VAR_EC2_SSH: ${{ secrets.EC2_SSH }}
     steps:
       - uses: actions/checkout@v2
+      - uses: alessiodionisi/setup-age-action@v1.3.0
       - uses: hashicorp/setup-terraform@v1
         with:
           terraform_wrapper: false
@@ -39,7 +40,9 @@ jobs:
           # ssh-keyscan -H ${{steps.terraform_init.outputs.ec2_instance_ip}} >> ~/.ssh/known_hosts
       - name: Decrypt config
         run: | 
-          echo "${{ secrets.AGE_PRIVATE_KEY_FILE }}" >> ./ML_API/env_secrets.py
+          echo "${{ secrets.AGE_PRIVATE_KEY_FILE }}" >> ./ML_API/key.txt
+          cd ML_API
+          age --decrypt -i key.txt EncryptedSecrets/env_secrets.age > env_secrets.py
           ls
       - name: Rsync ML_API to host
         run: 
