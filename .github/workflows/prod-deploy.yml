@@ -37,6 +37,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_PRIVATE_SSH }}" >> ~/.ssh/id_rsa
           chmod 700 ~/.ssh/id_rsa
+          echo "whats this? ${{steps.terraform_init.outputs.ec2_instance_ip}}"
           ssh-keyscan -H ${{steps.terraform_init.outputs.ec2_instance_ip}} >> ~/.ssh/known_hosts
       - name: Decrypt config
         run: | 
