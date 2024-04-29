@@ -7,7 +7,7 @@ from flask_cors import CORS
 from misc.utils import save_to_csv, add_module_directories_to_os
 add_module_directories_to_os()
 
-from ML_API.models.fake_or_not.run  import predictComment, process_csv
+from models.fake_or_not.run  import predictComment, process_csv
 from env_secrets import config
 
 home_dir = str(config['models_path'])
