@@ -32,6 +32,10 @@ jobs:
         with: 
           path: git@github.com:AnthonyCalderaio/Machine-Learning.git
 
+      - name: Wait for 10 seconds
+        run: sleep 10s
+        shell: bash
+
       - name: Adding Known Hosts
         run: |
           mkdir -p ~/.ssh
