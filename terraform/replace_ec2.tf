@@ -49,6 +49,10 @@ resource "aws_instance" "example" {
   # instance = aws_instance.example.id
 # }
 
+data "aws_eip" "ML_IP" {
+  # Configuration to fetch the Elastic IP information
+}
+
 resource "aws_eip_association" "ML_IP" {
   instance_id   = aws_instance.example.id
   allocation_id = data.aws_eip.ML_IP.id
