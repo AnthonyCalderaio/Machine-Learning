@@ -36,17 +36,22 @@ resource "aws_instance" "example" {
 
 
   # Associate the Elastic IP with the instance
-  associate_public_ip_address = false # Ensure this is set to false
-  eip                          = aws_eip.example.id # 
+  #associate_public_ip_address = false # Ensure this is set to false
+  #eip                          = aws_eip.example.id # 
 
   # Optionally include user_data to run scripts at launch
   # user_data = "${file("setup.sh")}"
 }
 
 # Allocate Elastic IP
-resource "aws_eip" "ML_IP" {
-  vpc = true # Specify if you are using a VPC or not
-  instance = aws_instance.example.id
+# resource "aws_eip" "ML_IP" {
+  # vpc = true # Specify if you are using a VPC or not
+  # instance = aws_instance.example.id
+# }
+
+resource "aws_eip_association" "ML_IP" {
+  instance_id   = aws_instance.example.id
+  allocation_id = data.aws_eip.ML_IP.id
 }
 
 variable "AWS_ACCESS_KEY_ID" {}
