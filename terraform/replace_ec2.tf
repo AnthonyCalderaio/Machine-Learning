@@ -44,7 +44,7 @@ resource "aws_instance" "example" {
   # user_data = "${file("setup.sh")}"
 }
 
-# Allocate Elastic IP
+# Allocate Elastic IP: 18.213.211.119
 # resource "aws_eip" "ML_IP" {
   # vpc = true # Specify if you are using a VPC or not
   # instance = aws_instance.example.id
