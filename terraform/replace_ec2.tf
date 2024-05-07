@@ -52,6 +52,10 @@ resource "aws_instance" "example" {
 
 data "aws_eip" "ML_IP" {
   # Configuration to fetch the Elastic IP information
+  filter {
+    name   = "tag:Name"
+    values = ["ML_IP"]
+  }
 }
 
 resource "aws_eip_association" "ML_IP" {
