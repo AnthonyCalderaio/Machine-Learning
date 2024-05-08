@@ -9,7 +9,7 @@ provider "aws" {
 
 
  resource "aws_security_group" "Flask_Inbound" {
-   name        = "allow-outbound-1"
+   name        = "Flask_Inbound"
    description = "Allow inbound traffic on port 5000"
 
   ingress {
