@@ -72,5 +72,5 @@ variable "EC2_SSH" {}
 #}
 
 output "ec2_instance_ip" {
-  value = data.aws_eip.Personal_Website_IP.public_ip
+  value = data.aws_eip.ML_IP.public_ip
 }
