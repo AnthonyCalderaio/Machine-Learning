@@ -14,5 +14,5 @@ sudo yum install -y python3-pip &&
 pip3 install -r requirements.txt &&
 
 # Serve
-nohup gunicorn -b 0.0.0.0:8080 run:app
+nohup gunicorn -b 0.0.0.0:8080 run:app >/dev/null 2>&1 &
 ## Check with $sudo netstat -tuln | grep 8080
