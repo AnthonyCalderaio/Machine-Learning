@@ -18,7 +18,7 @@ jobs:
           terraform_wrapper: false
 
       - name: Terminate Current Instance (Existing Action)
-        uses: ./.github/actions/destroy-instances.yml@main
+        uses: ./.github/workflows/destroy-instances.yml@main
 
       # Terraform stuff
       - name: Terraform Init and Apply AKA Initialize EC2 instance
