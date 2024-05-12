@@ -26,7 +26,10 @@ jobs:
                 aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
                 aws-region: us-east-1
             
-      - run: aws ec2 describe-instances --filters "Name=tag:Name,Values=AIBrary" --query "Reservations[*].Instances[*].InstanceId" --output text | tr '\n' ' ' | sed 's/ $//' > instance_ids.txt
+      - name: Get Instance IDs by Name
+        id: get-instance-ids
+        run: |
+          aws ec2 describe-instances --filters "Name=tag:Name,Values=AIBrary" --query "Reservations[*].Instances[*].InstanceId" --output text | tr '\n' ' ' | sed 's/ $//' > instance_ids.txt
 
       - name: Terminate Instances
         if: steps.get-instance-ids.outputs != ''
