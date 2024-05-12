@@ -21,7 +21,9 @@ jobs:
       #   uses: AnthonyCalderaio/MachineLearning/.github/workflows/destroy-instances.yml.yml@main
       - name: Use local my-action
         # run: ls .github/workflows/destroy-instances.yml
-        uses: .github/workflows/destroy-instances.yml # eslint-disable-line
+        run: ls ./workflows/
+        # uses: ./workflows/destroy-instances.yml
+        # uses: .github/workflows/destroy-instances.yml
 
       # Terraform stuff
       - name: Terraform Init and Apply AKA Initialize EC2 instance
