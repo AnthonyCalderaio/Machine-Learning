@@ -17,7 +17,7 @@ jobs:
           - name: Get Instance IDs by Name
             id: get-instance-ids
             run: |
-              aws ec2 describe-instances --filters "Name=tag:Name,Values=Personal Website" --query "Reservations[*].Instances[*].InstanceId" --output text | tr '\n' ' ' | sed 's/ $//' > instance_ids.txt
+              aws ec2 describe-instances --filters "Name=tag:Name,Values=AIBrary" --query "Reservations[*].Instances[*].InstanceId" --output text | tr '\n' ' ' | sed 's/ $//' > instance_ids.txt
 
           - name: Terminate Instances
             if: steps.get-instance-ids.outputs != ''
