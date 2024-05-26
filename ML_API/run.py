@@ -4,7 +4,7 @@ from flask import Flask, jsonify, request, send_file
 from flask_cors import CORS
 
 
-from misc.utils import save_to_csv, add_module_directories_to_os
+from misc.utils import save_to_csv, add_module_directories_to_os, get_files_from_folder
 add_module_directories_to_os()
 
 from models.fake_or_not.run  import predictComment, process_csv
@@ -18,6 +18,10 @@ CORS(app)
 @app.route('/', methods=['GET'])
 def welcome():
     return 'Welcome to Anthony\'s Machine Learning API'
+
+@app.route('/version', methods=['GET'])
+def version():
+    return jsonify({'version':'1.0.0'})
 
 
 # Define a route for your API endpoint
@@ -53,6 +57,12 @@ def fake_or_not():
 @app.route('/fake_or_not_bulk', methods=['POST'])
 def fake_or_not_bulk():
     return process_csv(file = request.files['file'])
+
+
+@app.route('/credit_card_fraud', methods=['GET'])
+def credit_card_fraud():
+    files_to_send = get_files_from_folder('./models/credit_card_fraud')
+    return jsonify(files_to_send)
 
 if __name__ == '__main__':
     # Run the Flask app

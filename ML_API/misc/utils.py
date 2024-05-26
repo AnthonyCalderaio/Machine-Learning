@@ -3,6 +3,7 @@ import smtplib
 import os
 import threading
 import sys
+import base64
 
 from email.message import EmailMessage
 from env_secrets import config
@@ -72,3 +73,18 @@ def append_to_csv(path, row):
 def add_module_directories_to_os():
     # This works by setting a high-up directory, hoisting up our view of the structure.
     sys.path.insert(0, str(config['models_path']))
+
+def encode_image(image_path):
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode('utf-8')
+    
+def get_files_from_folder(path):
+    directory = path
+    files = os.listdir(directory)
+    object_of_files_to_send = []
+    for file in files:
+        if(file.endswith('.txt')):
+            with open(path+'/'+file, 'r') as file:
+                text = file.read()
+                object_of_files_to_send.append(text)
+    return object_of_files_to_send
