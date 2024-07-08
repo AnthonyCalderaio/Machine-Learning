@@ -1,3 +1,4 @@
+import io
 import os
 import sys
 from flask import Flask, jsonify, request, send_file
@@ -63,6 +64,20 @@ def fake_or_not_bulk():
 def credit_card_fraud():
     files_to_send = get_files_from_folder('./models/credit_card_fraud')
     return jsonify(files_to_send)
+
+@app.route('/download_csv', method=['GET'])
+def download_csv():
+    # Convert DataFrame to CSV
+    csv_buffer = io.StringIO()
+
+    dataframe = '../LeagueChamp'
+    csv_buffer.seek(0)
+
+    # Send CSV file
+    response = make_response(csv_buffer.getvalue())
+    response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
+    response.mimetype = 'text/csv'
+    return response
 
 if __name__ == '__main__':
     # Run the Flask app
