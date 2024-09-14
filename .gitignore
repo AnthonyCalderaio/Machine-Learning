@@ -1,6 +1,18 @@
 AWS/EC2/FirstKey.pem
+Models/songs_from_mix/venv/*
+
 datasets/
 *.env
 # terraform/terraform.env
 Security/*
 terraform/.terraform/providers/registry.terraform.io/hashicorp/aws/5.46.0/darwin_arm64/terraform-provider-aws_v5.46.0_x5
+Infrastructure/Security/AWS/EC2/commands.txt
+Infrastructure/Security/AWS/EC2/FirstKey.pem
+Infrastructure/Security/AWS/EC2/04_23_2024_key/04_23_2024_key.pem
+Infrastructure/Security/secrets/age.key
+Infrastructure/Security/AWS/EC2/AWSCLIV2.pkg
+Infrastructure/Security/AWS/EC2/ec2_policy.json
+Infrastructure/Security/AWS/EC2/04_23_2024_key/04_23_2024_key_public
+Infrastructure/Security/secrets/key.txt
+Infrastructure/Security/secrets/secret.txt.age
+Infrastructure/Security/secrets/Instructions/age_commands.txt

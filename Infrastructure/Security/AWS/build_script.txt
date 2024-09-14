@@ -1,0 +1,20 @@
+build script:
+
+1) Activate virtual environment
+
+- create virtual environment
+$python3 -m venv venv
+
+- activate virtual environment
+$source venv/bin/activate
+
+2) Install dependencies
+$pip install -r requirements.txt
+
+
+
+full command:
+cd ML_API/ && python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt && gunicorn -b 0.0.0.0:5000 run:app
+
+
+http://107.21.189.227/hello

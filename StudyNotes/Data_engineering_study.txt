@@ -1,0 +1,17 @@
+Handling Missing Data:
+
+	Numerical
+	- Use interpolation
+	- Use mean, median, mode
+	- forward/backfill
+	- KNN
+
+
+Handeling Categorical Data (machine learning models obviously only understand numbers or booleans):
+
+- one hot encoding (category sized binary vectors)
+	* Useful when the features have no natural order.
+	* This avoids linearity right?
+- label encoding (numerical number mapping 1-n)
+	* Useful when the features have an ordinal relationship.
+	* This causes linearity right?
